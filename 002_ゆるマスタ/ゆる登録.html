@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5 text-center">
+            <!-- <h2>Checkout form</h2> -->
+            <h2>ゆる登録</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 order-md-1">
+                <!-- <h4 class="mb-3">Billing address</h4> -->
+                <form id="form" class="needs-validation">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>名前</label>
+                            <input type="text" class="form-control" name="namae">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label>地方</label>
+                            <select id="tihou" name="tihou" class="custom-select d-block w-100">
+                                <option>選択してください</option>
+                                <option value="EXTRA">EXTRA（ひみつ）</option>
+                                <option value="イベント">イベント（協力・対戦・ゆる狩）</option>
+                                <option>福引</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" id="birthplace1_row">
+                        <div class="col-md-6 mb-3">
+                            <label>出身地1</label>
+                            <input type="text" class="form-control" name="birthplace1">
+                        </div>
+                    </div>
+
+                    <div class="row" id="birthplace2_row">
+                        <div class="col-md-6 mb-3">
+                            <label>出身地2</label>
+                            <input type="text" class="form-control" name="birthplace2">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>属性</label>
+                            <div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="fire" value="火"
+                                        name="attribute">
+                                    <label class="custom-control-label" for="fire">火</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="water" value="水"
+                                        name="attribute">
+                                    <label class="custom-control-label" for="water">水</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="wind" value="風"
+                                        name="attribute">
+                                    <label class="custom-control-label" for="wind">風</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label>レア</label>
+                            <select name="rare" class="custom-select d-block w-100">
+                                <option>選択してください</option>
+                                <option>N</option>
+                                <option>R</option>
+                                <option>CR</option>
+                                <option>ZR</option>
+                                <option>MZR</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Cost</label>
+                            <input type="text" class="form-control" name="cost">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>HP</label>
+                            <input type="text" class="form-control" name="hp">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Power</label>
+                            <input type="text" class="form-control" name="power">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>HP差分</label>
+                            <input type="text" class="form-control" name="hp_difference">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Power差分</label>
+                            <input type="text" class="form-control" name="power_difference">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label>LS種類</label>
+                            <select id="ls_type" name="ls_type" class="custom-select d-block w-100">
+                                <option>選択してください</option>
+                                <option>攻撃↑</option>
+                                <option>連続</option>
+                                <option>全体</option>
+                                <option>HP↑</option>
+                                <option>防御↑</option>
+                                <option>かばう</option>
+                                <option>お金↑</option>
+                                <option>ドロ率↑</option>
+                                <option>経験↑</option>
+                                <option>なし</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" id="ls_ally_row">
+                        <div class="col-md-5 mb-3">
+                            <label>LS味方範囲</label>
+                            <select name="ls_ally" class="custom-select d-block w-100">
+                                <option value="">選択してください</option>
+                                <option>全</option>
+                                <option>火</option>
+                                <option>水</option>
+                                <option>風</option>
+                                <option>3色</option>
+                                <option>自</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" id="ls_enemy_row">
+                        <div class="col-md-5 mb-3">
+                            <label>LS敵範囲</label>
+                            <select name="ls_enemy" class="custom-select d-block w-100">
+                                <option value="">選択してください</option>
+                                <option>全</option>
+                                <option>火</option>
+                                <option>水</option>
+                                <option>風</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" id="ls_multiple_row">
+                        <div class="col-md-6 mb-3">
+                            <label>LS係数</label>
+                            <input type="text" class="form-control" name="ls_multiple">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5 mb-3">
+                            <label>YS種類</label>
+                            <select id="ys_type" name="ys_type" class="custom-select d-block w-100">
+                                <option>選択してください</option>
+                                <option>攻撃↑</option>
+                                <option>連続</option>
+                                <option>全体</option>
+                                <option>シールド</option>
+                                <option>かばう</option>
+                                <option>かわす</option>
+                                <option>回復</option>
+                                <option>蘇生</option>
+                                <option>遅延</option>
+                                <option>短縮</option>
+                                <option>属変</option>
+                                <option>なし</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" id="st_row">
+                        <div class="col-md-6 mb-3">
+                            <label>ST（スキルターン）</label>
+                            <input type="text" class="form-control" name="st">
+                        </div>
+                    </div>
+
+                    <div class="row" id="ys_ally_row">
+                        <div class="col-md-5 mb-3">
+                            <label>YS味方範囲</label>
+                            <select name="ys_ally" class="custom-select d-block w-100">
+                                <option value="">選択してください</option>
+                                <option>全</option>
+                                <option>火</option>
+                                <option>水</option>
+                                <option>風</option>
+                                <option>自</option>
+                                <option>リ</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" id="ys_enemy_row">
+                        <div class="col-md-5 mb-3">
+                            <label>YS敵範囲</label>
+                            <select name="ys_enemy" class="custom-select d-block w-100">
+                                <option value="">選択してください</option>
+                                <option>全</option>
+                                <option>火</option>
+                                <option>水</option>
+                                <option>風</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row" id="lasting_row">
+                        <div class="col-md-6 mb-3">
+                            <label>持続</label>
+                            <input type="text" class="form-control" name="lasting">
+                        </div>
+                    </div>
+
+                    <div class="row" id="ys_multiple_row">
+                        <div class="col-md-6 mb-3">
+                            <label>YS係数</label>
+                            <input type="text" class="form-control" name="ys_multiple" placeholder="色変の場合は火or水or風or三混">
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+                    <button id="submit" class="btn btn-primary btn-lg btn-block" type="submit">登録</button>
+
+                    <!--
+                    <hr class="mb-4">
+                    <button id="test_mode" class="btn btn-primary btn-lg btn-block" type="button">テストモード</button>
+                    -->
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(() => {
+        // 地方選択
+        $('#tihou').on('change', (e) => {
+            // 初期化
+            $('#birthplace1_row').show();
+            $('#birthplace2_row').show();
+            $('input[name="birthplace1"]').val('');
+            $('input[name="birthplace2"]').val('');
+            // 制御
+            if (e.target.value === 'EXTRA') {
+                $('input[name="birthplace1"]').val('ひみつ');
+                $('#birthplace1_row').hide();
+                $('#birthplace2_row').hide();
+            }
+        });
+
+        // リーダースキル種類
+        $('#ls_type').on('change', (e) => {
+            // 初期化
+            $('#ls_ally_row').show();
+            $('#ls_enemy_row').show();
+            $('#ls_multiple_row').show();
+            $('input[name="ls_ally"]').val('');
+            $('input[name="ls_enemy"]').val('');
+            $('input[name="ls_multiple"]').val('');
+            // 制御
+            if (e.target.value === '攻撃↑') {
+                // 攻撃
+                // なし
+            } else if (e.target.value === '連続') {
+                // 連続
+                $('#ls_enemy_row').hide();
+            } else if (e.target.value === '全体') {
+                // 全体
+                $('input[name="ls_ally"]').val('全');
+                $('input[name="ls_multiple"]').val('0');
+                $('#ls_ally_row').hide();
+                $('#ls_enemy_row').hide();
+                $('#ls_multiple_row').hide();
+            } else if (e.target.value === 'HP↑') {
+                // HP
+                $('#ls_enemy_row').hide();
+            } else if (e.target.value === '防御↑') {
+                // 防御
+                $('#ls_enemy_row').hide();
+            } else if (e.target.value === 'かばう') {
+                // かばう
+                $('input[name="ls_ally"]').val('自');
+                $('input[name="ls_multiple"]').val('0');
+                $('#ls_ally_row').hide();
+                $('#ls_enemy_row').hide();
+                $('#ls_multiple_row').hide();
+            } else if (e.target.value === 'お金↑') {
+                // お金↑
+                $('#ls_ally_row').hide();
+                $('#ls_enemy_row').hide();
+            } else if (e.target.value === 'ドロ率↑') {
+                // ドロ率↑
+                $('#ls_ally_row').hide();
+                $('#ls_enemy_row').hide();
+            } else if (e.target.value === '経験↑') {
+                // 経験↑
+                $('#ls_ally_row').hide();
+                $('#ls_enemy_row').hide();
+            } else if (e.target.value === 'なし') {
+                // なし
+                $('input[name="ls_multiple"]').val('100');
+                $('#ls_ally_row').hide();
+                $('#ls_enemy_row').hide();
+                $('#ls_multiple_row').hide();
+            }
+        });
+
+        // ゆるスキル種類
+        $('#ys_type').on('change', (e) => {
+            // 初期化
+            $('#ys_ally_row').show();
+            $('#ys_enemy_row').show();
+            $('#lasting_row').show();
+            $('#ys_multiple_row').show();
+            $('input[name="ys_ally"]').val('');
+            $('input[name="ys_enemy"]').val('');
+            $('input[name="lasting"]').val('');
+            $('input[name="ys_multiple"]').val('');
+            // 制御
+            if (e.target.value === '攻撃↑') {
+                // 攻撃↑
+                // なし
+            } else if (e.target.value === '連続') {
+                // 連続
+                $('#ys_enemy_row').hide();
+            } else if (e.target.value === '全体') {
+                // 全体
+                $('input[name="ys_enemy"]').val('全');
+                $('input[name="ys_multiple"]').val('0');
+                $('#ys_enemy_row').hide();
+                $('#ys_multiple_row').hide();
+            } else if (e.target.value === 'シールド') {
+                // シールド
+                $('input[name="ys_ally"]').val('全');
+                $('#ys_ally_row').hide();
+            } else if (e.target.value === 'かばう') {
+                // かばう
+                $('input[name="ys_ally"]').val('自');
+                $('#ys_ally_row').hide();
+            } else if (e.target.value === 'かわす') {
+                // かわす
+                $('input[name="ys_ally"]').val('リ');
+                $('#ys_ally_row').hide();
+            } else if (e.target.value === '回復') {
+                // 回復
+                $('#ys_enemy_row').hide();
+                $('#lasting_row').hide();
+            } else if (e.target.value === '蘇生') {
+                // 蘇生
+                $('#ys_enemy_row').hide();
+                $('#lasting_row').hide();
+            } else if (e.target.value === '遅延') {
+                // 遅延
+                $('#ys_ally_row').hide();
+                $('#lasting_row').hide();
+            } else if (e.target.value === '遅延') {
+                // 短縮
+                $('#ys_enemy_row').hide();
+                $('#lasting_row').hide();
+            } else if (e.target.value === '属変') {
+                // 属変
+                $('#ys_enemy_row').hide();
+            } else if (e.target.value === 'なし') {
+                // なし
+                $('input[name="ys_multiple"]').val('100');
+                $('#ys_ally_row').hide();
+                $('#ys_enemy_row').hide();
+                $('#lasting_row').hide();
+                $('#ys_multiple_row').hide();
+            }
+        });
+
+        // 登録押下
+        $('#submit').on('click', () => {
+            const form = $('#form').get(0);
+            google.script.run.executeRegister(form);
+        });
+
+        // テストモード
+        $('#test_mode').on('click', () => {
+            $('input[name="namae"]').val('おなまえ');
+            $('select[name="tihou"]').val('イベント');
+            $('input[name="birthplace1"]').val('しゅっしんち１');
+            $('input[name="birthplace2"]').val('しゅっしんち２');
+            $('#fire').prop('checked', true);
+            $('#water').prop('checked', true);
+            $('#wind').prop('checked', true);
+            $('select[name="rare"]').val('ZR');
+            $('input[name="cost"]').val('360');
+            $('input[name="hp"]').val('1234');
+            $('input[name="power"]').val('5678');
+            $('input[name="hp_difference"]').val('10');
+            $('input[name="power_difference"]').val('20');
+            $('select[name="ls_type"]').val('攻撃↑');
+            $('select[name="ls_ally"]').val('3色');
+            $('select[name="ls_enemy"]').val('全');
+            $('input[name="ls_multiple"]').val('666');
+            $('select[name="ys_type"]').val('攻撃↑');
+            $('input[name="st"]').val('1');
+            $('select[name="ys_ally"]').val('全');
+            $('select[name="ys_enemy"]').val('火');
+            $('input[name="lasting"]').val('256');
+            $('input[name="ys_multiple"]').val('512');
+        });
+    });
+</script>
+
+</html>
