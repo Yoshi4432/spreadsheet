@@ -252,10 +252,8 @@
                     <hr class="mb-4">
                     <button id="submit" class="btn btn-primary btn-lg btn-block" type="submit">登録</button>
 
-                    <!--
                     <hr class="mb-4">
                     <button id="test_mode" class="btn btn-primary btn-lg btn-block" type="button">テストモード</button>
-                    -->
 
                 </form>
             </div>
@@ -405,7 +403,9 @@
         // 登録押下
         $('#submit').on('click', () => {
             const form = $('#form').get(0);
-            google.script.run.executeRegister(form);
+            google.script.run.withSuccessHandler(function () {
+                google.script.host.close();
+            }).executeRegister(form);
         });
 
         // テストモード

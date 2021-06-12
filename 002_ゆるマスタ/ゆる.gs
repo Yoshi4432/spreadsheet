@@ -17,6 +17,10 @@ function executeRegister(form) {
   const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   const mstSheet = spreadsheet.getSheetByName(mstSheetName);
 
+  /* 最終行を表示 */
+  mstSheet.activate();
+  focusLatestYuru();
+
   /* 登録エンティティ */
   const yuru = new MstYuru();
   yuru.ID = mstSheet.getLastRow();
@@ -188,7 +192,7 @@ function getYuruSkill(yuru) {
     str = '$3ターンの間、$1属性の味方の攻撃が$4連続攻撃になる。';
   } else if (yuru.YS種類 === '全体') {
     // 全体
-    str = '$3ターンの間、$1属性の味方の攻撃が全体攻撃になる。';
+    str = '$3ターンの間、$1属性の味方全員の攻撃が全体攻撃になる。';
   } else if (yuru.YS種類 === 'シールド') {
     // シールド
     str = '$3ターンの間、味方全員に$2属性の敵からのダメージを$4%軽減するシールドを与える。';
@@ -288,6 +292,18 @@ function getMstYuruByName(name) {
 }
 
 /**
+ * 最終行（のあたり）をフォーカスする
+ */
+function focusLatestYuru() {
+  /* 最終行のあたりを初期表示 */
+  // 最終行番号
+  let sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  let lastRowIdx = sheet.getLastRow();
+  // 最終行選択
+  sheet.getRange(lastRowIdx + 3, 1, 1, 1).activate();
+}
+
+/**
  * ゆるマスタ
  */
 class MstYuru {
@@ -327,9 +343,11 @@ class MstYuru {
     this.持続 = vals[24];
     this.YS係数 = [25];
   }
-
 }
 
+/**
+ * getMstYuru***のテスト
+ */
 function testGetMstYuru() {
   let yuru = null;
 
@@ -350,15 +368,11 @@ function testGetMstYuru() {
   }
 }
 
+/**
+ * registerYuruのテスト
+ */
 function testRegisterYuru() {
+  /* ID 1610 のゆるが新規登録されることを確認 */
   const yuru = getMstYuruById(1610);
   registerYuru(yuru);
-}
-
-function testExecuteRegister() {
-  let form = {
-    namae: 123,
-    attribute: '火,水,風',
-  }
-  executeRegister(form);
 }
