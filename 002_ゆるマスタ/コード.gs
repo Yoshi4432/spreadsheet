@@ -1,13 +1,26 @@
 /**
  * 起動時の処理
  */
-function onOpen() {
+function onOpen(e) {
+  /* 最終行のあたりを初期表示 */
   // 最終行番号
   let sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   let lastRowIdx = sheet.getLastRow();
-
   // 最終行選択
   sheet.getRange(lastRowIdx + 3, 1, 1, 1).activate();
+
+  /* アドオン追加 */
+  SpreadsheetApp.getUi().createAddonMenu()
+    .addItem('登録', 'clickYuruRegister')
+    .addItem('ゆる山', 'clickYuruyama')
+    .addToUi();
+}
+
+/**
+ * アドオン追加時の処理
+ */
+function onInstall(e) {
+  onOpen(e);
 }
 
 /**
