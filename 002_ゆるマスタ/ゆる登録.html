@@ -33,7 +33,7 @@
                             <select id="tihou" name="tihou" class="custom-select d-block w-100">
                                 <option>選択してください</option>
                                 <option value="EXTRA">EXTRA（ひみつ）</option>
-                                <option value="対戦">イベント</option>
+                                <option value="対戦">対戦</option>
                                 <option value="協力">協力</option>
                                 <option value="ゆる狩">ゆる狩</option>
                                 <option>福引</option>
@@ -272,9 +272,18 @@
             $('#birthplace2_row').show();
             $('input[name="birthplace1"]').val('');
             $('input[name="birthplace2"]').val('');
-            // 制御
             if (e.target.value === 'EXTRA') {
                 $('input[name="birthplace1"]').val('ひみつ');
+                $('#birthplace1_row').hide();
+                $('#birthplace2_row').hide();
+            } else if (e.target.value === '協力') {
+                $('input[name="birthplace1"]').val('協力');
+                $('input[name="birthplace2"]').val('イベント');
+                $('#birthplace1_row').hide();
+                $('#birthplace2_row').hide();
+            } else if (e.target.value === 'ゆる狩') {
+                $('input[name="birthplace1"]').val('ゆる狩');
+                $('input[name="birthplace2"]').val('イベント');
                 $('#birthplace1_row').hide();
                 $('#birthplace2_row').hide();
             }
@@ -427,7 +436,7 @@
         // テストモード
         $('#test_mode').on('click', () => {
             $('input[name="namae"]').val('おなまえ');
-            $('select[name="tihou"]').val('イベント');
+            $('select[name="tihou"]').val('対戦');
             $('input[name="birthplace1"]').val('しゅっしんち１');
             $('input[name="birthplace2"]').val('しゅっしんち２');
             $('#fire').prop('checked', true);
