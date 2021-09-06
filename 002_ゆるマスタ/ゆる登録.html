@@ -253,6 +253,7 @@
 
                     <hr class="mb-4">
                     <button id="submit" class="btn btn-primary btn-lg btn-block" type="submit">登録</button>
+                    <button id="submit-continue" class="btn btn-warning btn-lg btn-block" type="submit">続けて登録</button>
 
                     <hr class="mb-4">
                     <button id="test_mode" class="btn btn-primary btn-lg btn-block" type="button">テストモード</button>
@@ -414,21 +415,28 @@
         $('#submit').on('click', () => {
             const form = $('#form').get(0);
             google.script.run.withSuccessHandler(function () {
-                const birthplace1 = $('input[name="birthplace1"]').val();
-                const rare = $('select[name="rare"]').val();
-                if (birthplace1 === 'ゆる狩' && rare !== 'MZR') {
+                google.script.host.close();
+            }).executeRegister(form);
+        });
+
+        // 続けて登録
+        $('#submit-continue').on('click', () => {
+            const form = $('#form').get(0);
+            const clear = confirm('クリアしますか？');
+            window.scroll(0,0);
+            google.script.run.withSuccessHandler(function () {
+                if (clear) {
+                    $('input').val('');
+                    $('input[type="checkbox"]').each((index, element) => {
+                        $(element).prop('checked', false)
+                    });
+                    $('select').val('');
+                } else {
                     $('input[name="namae"]').val('');
                     $('input[name="hp"]').val('');
                     $('input[name="power"]').val('');
                     $('input[name="hp_difference"]').val('');
                     $('input[name="power_difference"]').val('');
-                    $('input[name="ys_multiple"]').val('');
-                    
-                    let idx = $('select[name="rare"]').prop('selectedindex');
-                    idx = parseInt(int) + 1;
-                    $('select[name="rare"]').prop('selectedindex', idx);
-                } else {
-                    google.script.host.close();
                 }
             }).executeRegister(form);
         });
