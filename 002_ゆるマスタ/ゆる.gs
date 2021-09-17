@@ -152,7 +152,7 @@ function getLeaderSkill(yuru) {
     str = 'カードのドロップ率を$3%増加させる。';
   } else if (yuru.LS種類 === '経験↑') {
     // 経験↑
-    str = '経験値の取得量を$1%増加させる。';
+    str = '経験値の取得量を$3%増加させる。';
   } else if (yuru.LS種類 === 'なし') {
     // なし
     str = 'なし。';

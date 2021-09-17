@@ -33,9 +33,10 @@
                             <select id="tihou" name="tihou" class="custom-select d-block w-100">
                                 <option>選択してください</option>
                                 <option value="EXTRA">EXTRA（ひみつ）</option>
-                                <option value="対戦">対戦</option>
-                                <option value="協力">協力</option>
-                                <option value="ゆる狩">ゆる狩</option>
+                                <option>対戦</option>
+                                <option>協力</option>
+                                <option>ゆる狩</option>
+                                <option>イベント</option>
                                 <option>福引</option>
                             </select>
                         </div>
@@ -394,7 +395,7 @@
                 // 遅延
                 $('#ys_ally_row').hide();
                 $('#lasting_row').hide();
-            } else if (e.target.value === '遅延') {
+            } else if (e.target.value === '短縮') {
                 // 短縮
                 $('#ys_enemy_row').hide();
                 $('#lasting_row').hide();
@@ -424,6 +425,7 @@
             const form = $('#form').get(0);
             const clear = confirm('クリアしますか？');
             window.scroll(0,0);
+            $('#namae').focus();
             google.script.run.withSuccessHandler(function () {
                 if (clear) {
                     $('input').val('');
