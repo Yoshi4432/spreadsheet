@@ -425,10 +425,10 @@
             const form = $('#form').get(0);
             const clear = confirm('クリアしますか？');
             window.scroll(0,0);
-            $('#namae').focus();
+            $('input[name="namae"]').eq(0).focus();
             google.script.run.withSuccessHandler(function () {
                 if (clear) {
-                    $('input').val('');
+                    $('input[type="text"]').val('');
                     $('input[type="checkbox"]').each((index, element) => {
                         $(element).prop('checked', false)
                     });
