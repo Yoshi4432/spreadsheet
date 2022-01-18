@@ -211,7 +211,7 @@ function getYuruSkill(yuru) {
   } else if (yuru.YS種類 === '遅延') {
     // 遅延
     str = '$2属性の敵全員の攻撃カウントを$4増加させる。';
-  } else if (yuru.YS種類 === '遅延') {
+  } else if (yuru.YS種類 === '短縮') {
     // 短縮
     str = '$1属性の味方全員のスキルカウントを$4減少させる。';
   } else if (yuru.YS種類 === '属変') {
